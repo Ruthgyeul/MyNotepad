@@ -45,4 +45,13 @@ footer {
 
 footer p {
     margin: 0;
+    color: #000000;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer img {
+    width: 25px;
 }
