@@ -1,3 +1,34 @@
 /*==== Preset ====*/
 @import url("main.css");
 
+.bodytitle {
+    font-size: 120px;
+    text-align: center;
+}
+
+.subTitle {
+    font-size: 50px;
+    text-align: center;
+}
+
+button {
+    display: flex;
+    width: 300px;
+    height: 80px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid#CACACA;
+    color: #ffffff;
+    background-color: #333333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.field button:hover {
+    background-color: #505050;
+}
