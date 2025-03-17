@@ -48,6 +48,6 @@ button {
     outline: none;
 }
 
-.field button:hover {
+button:hover {
     background-color: #505050;
 }
