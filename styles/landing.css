@@ -1,7 +1,8 @@
 /*==== Preset ====*/
 @import url("main.css");
 
-.bodytitle {
+.bodyTitle {
+    margin-top: 5%;
     font-size: 120px;
     text-align: center;
 }
