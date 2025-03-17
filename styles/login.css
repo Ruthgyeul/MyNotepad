@@ -1,27 +1,28 @@
+/*==== Preset ====*/
 @import url("main.css");
 
-/* LogIn Area */
-.boxTitle {
-    font-size: 28px;
-    font-weight: 600;
-    color: #232836;
-    text-align: center;
-}
-
-.form {
+/*==== Login Field ====*/
+.formContent {
     position: relative;
     width: 100%;
-    padding: 30px;
+    max-width: 450px;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 50px;
-    max-width: 450px;
+    padding: 30px;
     border-radius: 6px;
-    background: #FFF;
+    background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.form .field {
+.boxTitle {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    color: #232836;
+}
+
+.formContent .field {
     position: relative;
     width: 100%;
     height: 50px;
@@ -29,17 +30,16 @@
     border-radius: 6px;
 }
 
-.form .loginField {
+.formContent .loginField {
     margin-top: 20px;
 }
 
-.field input,
-.field button {
-    height: 100%;
+.field input, .field button {
     width: 100%;
-    border: none;
+    height: 100%;
     font-size: 16px;
     font-weight: 400;
+    border: none;
     border-radius: 6px;
 }
 
@@ -53,9 +53,9 @@
 }
 
 .field button {
-    color: #fff;
-    background-color: #333;
     transition: all 0.3s ease;
+    color: #ffffff;
+    background-color: #333333;
     cursor: pointer;
 }
 

@@ -1,19 +1,21 @@
+/*==== Preset ====*/
 html, body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
 }
 
+/*==== Header Area ====*/
 header {
     display: fixed;
     justify-content: space-between;
     padding: 20px 10px;
     align-items: center;
-    color: #fff;
+    color: #ffffff;
     background-color: #333333;
 }
 
-.title {
+header .title {
     position: relative;
     left: 50%;
     text-align: center;
@@ -22,12 +24,13 @@ header {
     z-index: 9999;
 }
 
-.title strong {
+header .title strong {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
 }
 
+/*==== Footer Area ====*/
 footer {
     position: absolute;
     width: 100%;
