@@ -1,0 +1,12 @@
+[
+    {
+        "boardId": 1,
+        "boardName": "메모장",
+        "authorId": 1
+    },
+    {
+        "boardId": 2,
+        "boardName": "메모장",
+        "authorId": 1
+    }
+]
