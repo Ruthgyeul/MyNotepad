@@ -35,6 +35,7 @@ header .title strong {
 
 /*==== Main Area ====*/
 main {
+    height: 90%;
     margin: auto;
 }
 
@@ -45,7 +46,9 @@ footer {
     height: 65px;
     bottom: 0;
     margin: auto;
+    margin-top: 60px;
     text-align: center;
+    align-content: baseline;
     justify-content: center;
     color: #000000;
     background-color: #dbdbdb;
