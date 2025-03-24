@@ -66,13 +66,23 @@ footer {
 /* Info Area */
 .infoArea {
     display: flex;
+    justify-content: center;
+    flex-direction: row;
     gap: 15px;
 }
 
 .infoArea .formField {
     flex: 1;
-    margin: 0;
     height: 30px;
+    margin: 0;
+}
+
+.infoArea .formField:nth-child(1) {
+    max-width: 80px;
+}
+
+.infoArea .formField:nth-child(3) {
+    max-width: 120px;
 }
 
 .infoArea select {
@@ -83,6 +93,10 @@ footer {
     padding: 0;
     border: none;
     background: transparent;
+}
+
+.infoArea .formField:nth-child(1) input {
+    width: 20px;
 }
 
 /* Note Area */

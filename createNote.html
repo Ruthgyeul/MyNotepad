@@ -7,19 +7,19 @@
     <link rel="icon" href="./assets/logo/icon.png"/>
     <link href="./styles/createNote.css" type="text/css" rel="stylesheet"/>
     <script src="./scripts/newNote.js" defer></script>
-    <title>Notepad: 새로운 메모 생성</title>
+    <title>Notepad: New Note</title>
 </head>
 
 <body onload="newNoteAutoInfo()">
 <!-- Header Area -->
 <header>
     <div class="title">
-        <strong onclick="window.location.href='landing.html'">MyNotepad: 새로운 메모 생성</strong>
+        <strong onclick="window.location.href='landing.html'">MyNotepad</strong>
     </div>
 </header>
 
 <main>
-    <form id="noteForm" class="noteForm" method="POST">
+    <form id="noteForm" class="noteForm" action="home.html" method="POST">
         <div class="formField titleArea">
             <span id="noteId" class="noteId">No. 0</span>
             <label for="noteTitle">제목</label>
@@ -29,6 +29,10 @@
         <hr/>
 
         <div class="infoArea">
+            <div class="formField">
+                <label for="noteFlag">중요도</label>
+                <input type="checkbox" id="noteFlag" name="noteFlag">
+            </div>
             <div class="formField">
                 <label for="noteCategory">카테고리</label>
                 <select name="noteCategory" id="noteCategory" required>
