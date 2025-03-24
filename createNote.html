@@ -4,30 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/logo/loog.png" />
-    <link href="./styles/home.css" type="text/css" rel="stylesheet" />
-    <title>Notepad: home</title>
+    <link rel="icon" href="./assets/logo/icon.png"/>
+    <link href="./styles/createNote.css" type="text/css" rel="stylesheet"/>
+    <script src="./scripts/newNote.js" defer></script>
+    <title>Notepad: 새로운 메모 생성</title>
 </head>
 
-<body>
-    <!-- Header Area -->
-    <header>
-        <div class="title">
-            <strong onclick="window.location.href='landing.html'">MyNotepad</strong>
+<body onload="newNoteAutoInfo()">
+<!-- Header Area -->
+<header>
+    <div class="title">
+        <strong onclick="window.location.href='landing.html'">MyNotepad: 새로운 메모 생성</strong>
+    </div>
+</header>
+
+<main>
+    <form id="noteForm" class="noteForm" method="POST">
+        <div class="formField titleArea">
+            <span id="noteId" class="noteId">No. 0</span>
+            <label for="noteTitle">제목</label>
+            <input type="text" id="noteTitle" class="noteTitle" name="noteTitle" placeholder="제목을 입력하세요." required>
         </div>
-    </header>
 
-    <main>
-        <h1>게시판 구역</h1>
-    </main>
+        <hr/>
 
-    <!-- Footer Area -->
-    <footer>
-        <p>&copy; 2025 Ruthgyeul. All rights reserved.</p>
-        <a href="https://github.com/Ruthgyeul/" target="_blank">
-            <img src="./assets/ui/github.png" alt="github" />
-        </a>
-    </footer>
+        <div class="infoArea">
+            <div class="formField">
+                <label for="noteCategory">카테고리</label>
+                <select name="noteCategory" id="noteCategory" required>
+                    <option value="" selected disabled>카테고리를 선택해주세요.</option>
+                    <option value="general">일반</option>
+                    <option value="study">공부</option>
+                    <option value="etc">기타</option>
+                </select>
+            </div>
+            <div class="formField">
+                <label for="noteColor">색상 선택</label>
+                <input type="color" id="noteColor" name="noteColor" value="#FFBF00" required>
+            </div>
+            <div class="formField">
+                <label for="createDate">생성 날짜</label>
+                <span id="createDate"></span>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="formField noteArea">
+            <textarea id="noteText" class="noteText" name="noteText" placeholder="본문을 입력해주세요." required></textarea>
+        </div>
+        <div class="formField attachmentArea">
+            <label for="noteAttachment">파일 첨부</label>
+            <input type="file" id="noteAttachment" name="noteAttachment">
+        </div>
+
+        <hr/>
+
+        <div class="buttonField">
+            <button type="submit" class="submitB">저장하기</button>
+            <button type="button" class="cancelB" onclick="window.location.href='home.html'">취소</button>
+        </div>
+    </form>
+</main>
+
+<!-- Footer Area -->
+<footer>
+    <p>&copy; 2025 Ruthgyeul. All rights reserved.</p>
+    <a href="https://github.com/Ruthgyeul/" target="_blank">
+        <img src="./assets/ui/github.png" alt="github"/>
+    </a>
+</footer>
 </body>
 
 </html>
