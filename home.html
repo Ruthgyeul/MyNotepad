@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/logo/loog.png" />
+    <link rel="icon" href="./assets/logo/icon.png" />
     <link href="./styles/home.css" type="text/css" rel="stylesheet" />
     <title>Notepad: home</title>
 </head>
@@ -18,7 +18,44 @@
     </header>
 
     <main>
-        <h1>게시판 구역</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>중요도</th>
+                <th>카테고리</th>
+                <th>제목</th>
+                <th>최종 수정일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>3</td>
+                <td>✔</td>
+                <td>일반</td>
+                <td>노트 임시 제목3</td>
+                <td>2025-03-25</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td></td>
+                <td>일반</td>
+                <td>노트 임시 제목2</td>
+                <td>2025-03-24</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>✔</td>
+                <td>기타</td>
+                <td>노트 임시 제목1</td>
+                <td>2025-03-23</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <hr style="width:70%; margin-top: 40px;" />
+
+        <button onclick="window.location.href='createNote.html'">새로운 노트 생성하기</button>
     </main>
 
     <!-- Footer Area -->
