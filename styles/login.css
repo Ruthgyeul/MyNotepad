@@ -50,9 +50,9 @@
 }
 
 .field button {
-    transition: all 0.3s ease;
     color: #ffffff;
     background-color: #333333;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
