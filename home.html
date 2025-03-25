@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/logo/icon.png" />
     <link href="./styles/home.css" type="text/css" rel="stylesheet" />
+    <script src="./scripts/home.js" defer></script>
     <title>Notepad: home</title>
 </head>
 
@@ -19,40 +20,19 @@
 
     <main>
         <menu>
-            <div class="menu-bar">
-                <!-- Category Dropdown -->
+            <div class="menuBar">
                 <select id="categoryFilter">
                     <option value="all">전체</option>
                     <option value="일반">일반</option>
                     <option value="기타">기타</option>
                 </select>
 
-                <form>
-                    <!-- Search Bar -->
-                    <input type="text" id="searchInput" placeholder="노트 (제목/내용/키워드) 검색..." />
-
-                    <!-- Search Button -->
+                <form id="searchForm" onsubmit="" method="get">
+                    <input type="text" id="searchInput" class="searchInput" placeholder="노트 (제목/내용/키워드) 검색..." />
                     <button onclick="searchNotes()">검색</button>
                 </form>
             </div>
         </menu>
-        <script>
-            function searchNotes() {
-                const searchValue = document.getElementById("searchInput").value.toLowerCase();
-                const categoryValue = document.getElementById("categoryFilter").value;
-                const rows = document.querySelectorAll("tbody tr");
-
-                rows.forEach(row => {
-                    const category = row.cells[2].innerText;
-                    const title = row.cells[3].innerText.toLowerCase();
-
-                    const categoryMatch = categoryValue === "all" || category === categoryValue;
-                    const searchMatch = title.includes(searchValue);
-
-                    row.style.display = categoryMatch && searchMatch ? "" : "none";
-                });
-            }
-        </script>
         <table>
             <thead>
             <tr>

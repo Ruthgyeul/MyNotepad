@@ -6,26 +6,26 @@ main {
     height: 90%;
 }
 
-/*==== Menu Bar ====*/
-/* Menu Bar Styling */
+/*==== Dashboard ====*/
+/* Menu Bar */
 menu {
     height: 10%;
     padding: 0;
 }
 
-.menu-bar {
+.menuBar {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 /* Category Dropdown */
 #categoryFilter {
     padding: 8px;
+    font-size: 14px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 14px;
 }
 
 menu form {
@@ -33,36 +33,34 @@ menu form {
 }
 
 /* Search Input */
-#searchInput {
-    padding: 8px;
+.searchInput {
     width: 60%;
-    border-radius: 5px;
+    padding: 8px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     font-size: 14px;
 }
 
 /* Search Button */
-.menu-bar button {
+.menuBar button {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
-    background: #505050;
-    color: white;
     font-size: 14px;
-    cursor: pointer;
+    color: white;
+    background: #505050;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.menu-bar button:hover {
+.menuBar button:hover {
     background: #303030;
 }
 
-
-/*==== Global Table Styling ====*/
+/* Note Table */
 table {
     width: 65%;
     margin: auto;
-    margin-top: 20px;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
