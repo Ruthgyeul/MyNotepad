@@ -1,5 +1,7 @@
 # [MyNotepad](https://ruthgyeul.github.io/MyNotepad)
 Inha Univ. CSE2104 Web Project
 
-# Run
+# Getting Started
+```md
 open index.html to start the web
+```
