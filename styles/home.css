@@ -6,53 +6,147 @@ main {
     height: 90%;
 }
 
+/*==== Menu Bar ====*/
+/* Menu Bar Styling */
+menu {
+    height: 10%;
+    padding: 0;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Category Dropdown */
+#categoryFilter {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+menu form {
+    display: contents;
+}
+
+/* Search Input */
+#searchInput {
+    padding: 8px;
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Search Button */
+.menu-bar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: #505050;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-bar button:hover {
+    background: #303030;
+}
+
+
+/*==== Global Table Styling ====*/
 table {
-    display: table;
-    width: 90%;
+    width: 65%;
     margin: auto;
     margin-top: 20px;
     border-collapse: collapse;
-    justify-content: center;
-    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
-th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-th {
-    color: white;
+/* Sticky Header */
+thead {
+    position: sticky;
+    top: 0;
     background-color: #333;
+    z-index: 10;
 }
 
+/* Table Header */
+th {
+    padding: 12px;
+    text-align: center;
+    color: white;
+    background: #333333;
+    cursor: default;
+}
+
+th:nth-child(1) {
+    width: 40px;
+}
+
+th:nth-child(2) {
+    width: 45px;
+}
+
+th:nth-child(3) {
+    width: 120px;
+}
+
+th:nth-child(5) {
+    width: 120px;
+}
+
+/* Table Rows */
 td {
-    background-color: #fff;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
 }
 
+/* Alternating Row Colors */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f8f8;
 }
 
-button {
+/* Hover Effect */
+tr:hover {
+    background-color: #e0e0e0;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+/* Flagged Icon */
+.flagged {
+    font-size: 16px;
+    color: red;
+}
+
+/* New Note Button */
+.newNoteB {
     display: flex;
-    width: 150px;
-    height: 30px;
-    margin: auto;
+    width: 180px;
+    height: 40px;
+    margin: 30px auto;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
-    border-radius: 6px;
-    border: 1px solid#CACACA;
-    color: #ffffff;
-    background-color: #333333;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background: #505050;
     transition: all 0.3s ease;
     cursor: pointer;
-    outline: none;
 }
 
-button:hover {
+.newNoteB:hover {
     background-color: #505050;
 }

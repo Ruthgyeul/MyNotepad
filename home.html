@@ -18,6 +18,41 @@
     </header>
 
     <main>
+        <menu>
+            <div class="menu-bar">
+                <!-- Category Dropdown -->
+                <select id="categoryFilter">
+                    <option value="all">전체</option>
+                    <option value="일반">일반</option>
+                    <option value="기타">기타</option>
+                </select>
+
+                <form>
+                    <!-- Search Bar -->
+                    <input type="text" id="searchInput" placeholder="노트 (제목/내용/키워드) 검색..." />
+
+                    <!-- Search Button -->
+                    <button onclick="searchNotes()">검색</button>
+                </form>
+            </div>
+        </menu>
+        <script>
+            function searchNotes() {
+                const searchValue = document.getElementById("searchInput").value.toLowerCase();
+                const categoryValue = document.getElementById("categoryFilter").value;
+                const rows = document.querySelectorAll("tbody tr");
+
+                rows.forEach(row => {
+                    const category = row.cells[2].innerText;
+                    const title = row.cells[3].innerText.toLowerCase();
+
+                    const categoryMatch = categoryValue === "all" || category === categoryValue;
+                    const searchMatch = title.includes(searchValue);
+
+                    row.style.display = categoryMatch && searchMatch ? "" : "none";
+                });
+            }
+        </script>
         <table>
             <thead>
             <tr>
@@ -31,31 +66,31 @@
             <tbody>
             <tr>
                 <td>3</td>
-                <td>✔</td>
+                <td><span class="flagged">🚩</span></td>
                 <td>일반</td>
-                <td>노트 임시 제목3</td>
+                <td>노트 제목3</td>
                 <td>2025-03-25</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td></td>
                 <td>일반</td>
-                <td>노트 임시 제목2</td>
+                <td>노트 제목2</td>
                 <td>2025-03-24</td>
             </tr>
             <tr>
                 <td>1</td>
-                <td>✔</td>
+                <td></td>
                 <td>기타</td>
-                <td>노트 임시 제목1</td>
+                <td>노트 제목1</td>
                 <td>2025-03-23</td>
             </tr>
             </tbody>
         </table>
 
-        <hr style="width:70%; margin-top: 40px;" />
+        <hr style="width:60%; margin-top: 40px;" />
 
-        <button onclick="window.location.href='createNote.html'">새로운 노트 생성하기</button>
+        <button onclick="window.location.href='createNote.html'" class="newNoteB">새로운 노트 생성하기</button>
     </main>
 
     <!-- Footer Area -->
