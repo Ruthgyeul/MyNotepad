@@ -14,7 +14,7 @@ file:///path-to-project/index.html
 To deploy **MyNotepad** on **Apache Tomcat**, follow these steps:
 
 1. **Start the Tomcat Server**  
-   - Ensure Tomcat is running before deployment.  
+   Ensure Tomcat is running before deployment.  
 
 2. **Create a WAR File**  
    - Using **Maven**:  
