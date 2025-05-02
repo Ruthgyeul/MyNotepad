@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/logo/icon.png" />
-    <link href="./styles/login.css" type="text/css" rel="stylesheet" />
-    <script src="./scripts/login.js"></script>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/logo/icon.png" />
+    <link href="${pageContext.request.contextPath}/styles/login.css" type="text/css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/scripts/login.js"></script>
     <title>MyNotepad: Login</title>
 </head>
 
@@ -14,7 +15,7 @@
     <!-- Header Area -->
     <header>
         <div class="title">
-            <strong onclick="window.location.href='landing.html'">MyNotepad</strong>
+            <strong onclick="window.location.href='landing.jsp'">MyNotepad</strong>
         </div>
     </header>
 
@@ -44,7 +45,7 @@
     <footer>
         <p>&copy; 2025 Ruthgyeul. All rights reserved.</p>
         <a href="https://github.com/Ruthgyeul/MyNotepad" target="_blank">
-            <img src="./assets/ui/github.png" alt="github" />
+            <img src="${pageContext.request.contextPath}/assets/ui/github.png" alt="github" />
         </a>
     </footer>
 </body>

@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/logo/icon.png"/>
-    <link href="./styles/createNote.css" type="text/css" rel="stylesheet"/>
-    <script src="./scripts/newNote.js" defer></script>
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/logo/icon.png"/>
+    <link href="${pageContext.request.contextPath}/styles/createNote.css" type="text/css" rel="stylesheet"/>
+    <script src="${pageContext.request.contextPath}/scripts/newNote.js" defer></script>
     <title>Notepad: New Note</title>
 </head>
 
@@ -14,12 +15,12 @@
 <!-- Header Area -->
 <header>
     <div class="title">
-        <strong onclick="window.location.href='landing.html'">MyNotepad</strong>
+        <strong onclick="window.location.href='landing.jsp'">MyNotepad</strong>
     </div>
 </header>
 
 <main>
-    <form id="noteForm" class="noteForm" action="home.html" method="POST">
+    <form id="noteForm" class="noteForm" action="home.jsp" method="POST" enctype="multipart/form-data">
         <div class="formField titleArea">
             <span id="noteId" class="noteId">No. 0</span>
             <label for="noteTitle">제목</label>
@@ -66,7 +67,7 @@
 
         <div class="buttonField">
             <button type="submit" class="submitB">저장하기</button>
-            <button type="button" class="cancelB" onclick="window.location.href='home.html'">취소</button>
+            <button type="button" class="cancelB" onclick="window.location.href='home.jsp'">취소</button>
         </div>
     </form>
 </main>
@@ -75,7 +76,7 @@
 <footer>
     <p>&copy; 2025 Ruthgyeul. All rights reserved.</p>
     <a href="https://github.com/Ruthgyeul/MyNotepad" target="_blank">
-        <img src="./assets/ui/github.png" alt="github"/>
+        <img src="${pageContext.request.contextPath}/assets/ui/github.png" alt="github"/>
     </a>
 </footer>
 </body>
