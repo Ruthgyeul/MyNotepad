@@ -1,157 +1,335 @@
-/*==== Import Main Styles ====*/
-@import url("main.css");
+@import 'main.css';
 
-html, body {
-    display: block;
-}
-
+/*==== Main layout ====*/
 main {
-    width: 100%;
-    height: 90%;
+  justify-content: center;
 }
 
-footer {
-    position: relative;
-    margin-top: 60px;
-    align-content: baseline;
-}
-
-/*==== create new Note ====*/
+/* Note Form */
 .noteForm {
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
-    padding: 30px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-    background: #FFFFFF;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: white;
+  transition: var(--transition);
+  animation: fadeIn 0.4s ease-out;
 }
 
-.noteForm input {
-    height: 30px;
+/* Section Dividers */
+.noteForm hr {
+  height: 1px;
+  margin: 1.5rem 0;
+  border: none;
+  background-color: var(--border-color);
 }
 
-.formField, .buttonField {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
+/* Form Fields */
+.formField {
+  display: flex;
+  margin-bottom: 1.2rem;
+  align-items: center;
 }
 
 .formField label {
-    font-weight: bold;
+  min-width: 90px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-color);
 }
 
 /* Title Area */
 .titleArea {
-    display: flex;
-    flex-direction: row;
-    font-size: 18px;
-    text-align: center;
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
 }
 
-.titleArea .noteId {
-    font-size: 14px;
-    margin-right: 16px;
-    color: #333;
+.noteId {
+  padding: 0.3rem 0.8rem;
+  margin-right: 1rem;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  color: var(--light-text);
+  background-color: #f2f4f8;
 }
 
-.titleArea .noteTitle {
-    font-weight: bold;
-    width: 85%;
+.noteTitle {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  outline: none;
+}
+
+.noteTitle:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
 }
 
 /* Info Area */
 .infoArea {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 15px;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
-.infoArea .formField {
-    flex: 1;
-    height: 30px;
-    margin: 0;
+/* Checkbox Styling */
+input[type="checkbox"] {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  transition: var(--transition);
+  appearance: none;
+  cursor: pointer;
 }
 
-.infoArea .formField:nth-child(1) {
-    max-width: 80px;
+input[type="checkbox"]:checked {
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
-.infoArea .formField:nth-child(3) {
-    max-width: 120px;
+input[type="checkbox"]:checked:after {
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  left: 6px;
+  top: 2px;
+  content: "";
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
-.infoArea select {
-    height: 30px;
+/* Select Styling */
+select {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: white;
+  outline: none;
+  appearance: none;
+  transition: var(--transition);
+  cursor: pointer;
 }
 
-.infoArea input {
-    padding: 0;
-    border: none;
-    background: transparent;
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
 }
 
-.infoArea .formField:nth-child(1) input {
-    width: 20px;
+/* Color Picker */
+input[type="color"] {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--border-color);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-/* Note Area */
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* Date Display */
+#createDate {
+  padding: 0.65rem 0;
+  font-size: 0.95rem;
+  color: var(--light-text);
+}
+
+/* Textarea Styling */
 .noteArea {
-    flex-direction: column;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
-.noteArea .noteText {
-    width: 100%;
-    height: 300px;
-    resize: none;
+.noteArea label {
+  margin-bottom: 0.5rem;
 }
 
-/* Attachment Area */
+.noteText {
+  width: 100%;
+  height: 300px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.5;
+  resize: vertical;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  outline: none;
+  transition: var(--transition);
+}
+
+.noteText:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+/* File Upload Styling */
 .attachmentArea {
-    display: inline;
-    left: 0;
-    margin-top: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 2px dashed var(--border-color);
+  background-color: #f9fafb;
+  transition: var(--transition);
+  cursor: pointer;
 }
 
-.attachmentArea input {
-    align-items: center;
-    justify-content: center;
+.attachmentArea:hover {
+  border-color: var(--primary-color);
 }
 
-/* Buttons */
+.attachmentArea label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+input[type="file"] {
+  width: 100%;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Button */
 .buttonField {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+  display: flex;
+  margin-top: 2rem;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.submitB, .cancelB {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .submitB {
-    padding: 10px 20px;
-    border: none;
-    color: #ffffff;
-    background: #333333;
-    transition: all 0.3s ease;
-    cursor: pointer;
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
 }
 
 .submitB:hover {
-    background: #505050;
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
 .cancelB {
-    padding: 10px 20px;
-    border: 1px solid black;
-    color: black;
-    background: #ffffff;
-    transition: all 0.3s ease;
-    cursor: pointer;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  background-color: white;
 }
 
 .cancelB:hover {
-    color: #ffffff;
-    background: red;
+  color: white;
+  border-color: var(--danger-color);
+  background-color: var(--danger-color);
+  transform: translateY(-2px);
+}
+
+/* View Mode */
+.viewTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.viewFlag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  background-color: #f2f4f8;
+}
+
+.viewFlag.important {
+  font-weight: 500;
+  color: #856404;
+  background-color: #fff3cd;
+}
+
+.viewCategory {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.colorDisplay {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border-color);
+}
+
+.viewContent {
+  min-height: 300px;
+  padding: 1.5rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  background-color: #fff;
+}
+
+.editB, .listB {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.editB {
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.editB:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.listB {
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  background-color: white;
+}
+
+.listB:hover {
+  background-color: #f2f4f8;
+  transform: translateY(-2px);
 }
