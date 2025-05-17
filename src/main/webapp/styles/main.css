@@ -1,3 +1,4 @@
+
 /*==== Base Styles & Imports ====*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
@@ -46,6 +47,9 @@ header {
   box-shadow: var(--shadow);
   background-color: white;
   z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header .title {
