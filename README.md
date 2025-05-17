@@ -1,4 +1,4 @@
-# [MyNotepad](https://ruthgyeul.github.io/MyNotepad)
+# MyNotepad
 - Inha Univ. CSE2104 Web Project
 - Created by Jaeah Lee
 
