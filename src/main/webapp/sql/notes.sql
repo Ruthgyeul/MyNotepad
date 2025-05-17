@@ -7,7 +7,6 @@ CREATE TABLE notes (
    content TEXT,
    important BOOLEAN DEFAULT FALSE,
    color VARCHAR(50),
-   file_paths TEXT COMMENT 'JSON string []',
    updated_at TIMESTAMP NOT NULL,
    created_at TIMESTAMP NOT NULL
 );
