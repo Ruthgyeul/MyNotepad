@@ -1,0 +1,12 @@
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    category VARCHAR(255),
+    title VARCHAR(255) NOT NULL,
+    content TEXT,
+    important BOOLEAN DEFAULT FALSE,
+    color VARCHAR(50),
+    file_paths TEXT COMMENT 'JSON string []',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
