@@ -1,9 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ include file="utils/login.jsp" %>
+
+<%
+    String currentUsername = (String)session.getAttribute("username");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <% if(currentUsername != null) { %>
+    <meta name="username" content="<%= currentUsername %>">
+    <% } %>
     <link rel="icon" href="./assets/logo/icon.png"/>
     <link href="./styles/index.css" type="text/css" rel="stylesheet"/>
     <script src="./scripts/header.js" defer></script>
@@ -16,11 +25,16 @@
         <strong onclick="window.location.href='index.jsp'">MyNotepad</strong>
     </div>
     <div class="login-container">
-        <form id="loginForm" action="home.jsp" method="POST">
+        <form id="loginForm" method="POST">
             <input type="text" name="username" placeholder="Username" required autocomplete="username">
             <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
             <button type="submit" class="login-btn">Login</button>
         </form>
+        <% if(request.getAttribute("error") != null) { %>
+            <div class="error-message">
+                <%= request.getAttribute("error") %>
+            </div>
+        <% } %>
     </div>
 </header>
 

@@ -4,23 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 로그인 폼 제출 이벤트
     if (loginForm) {
         loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const usernameInput = loginForm.querySelector('input[name="username"]');
-            const passwordInput = loginForm.querySelector('input[name="password"]');
-
-            const usernameValue = usernameInput?.value?.trim();
-            const passwordValue = passwordInput?.value?.trim();
-
-            if (usernameValue && passwordValue) {
-                sessionStorage.setItem('username', usernameValue);
-                window.location.href = window.location.href;
-            }
+            // 폼 제출은 jsp에서 처리
         });
     }
 
     // 로그인 상태일 경우 사용자 정보 표시
-    const usernameValue = sessionStorage.getItem('username');
+    const usernameValue = document.querySelector('meta[name="username"]')?.content;
     if (usernameValue) {
         const loginContainer = document.querySelector('.login-container');
         if (loginForm && loginContainer) {
@@ -36,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logoutBtn.className = 'logout-btn';
             logoutBtn.textContent = 'Logout';
             logoutBtn.onclick = () => {
-                sessionStorage.removeItem('username');
-                window.location.href = window.location.href;
+                window.location.href = 'logout.jsp';
             };
 
             userInfo.appendChild(welcomeSpan);
@@ -50,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('startBtn');
     if (startBtn) {
         startBtn.addEventListener('click', () => {
-            const username = sessionStorage.getItem('username');
+            const username = document.querySelector('meta[name="username"]')?.content;
             if (username) {
                 window.location.href = 'home.jsp';
             } else {

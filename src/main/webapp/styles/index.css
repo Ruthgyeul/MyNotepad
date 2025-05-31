@@ -166,3 +166,15 @@ button:active {
     font-weight: bold;
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
+
+/* Error Message */
+.error-message {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: var(--radius);
+    animation: fadeIn 0.3s ease-out;
+}
