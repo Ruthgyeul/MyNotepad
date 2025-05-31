@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// 모달 DOM을 동적으로 생성 (중복 방지)
+// 모달 DOM을 동적으로 생성
 function createLoginModal() {
     if (document.getElementById('loginModal')) return;
 
@@ -95,13 +95,13 @@ function createLoginModal() {
     document.body.appendChild(modal);
 }
 
-// 모달 보여주고 1.5초 후 자동 닫기
+// 모달 보여주고 1초 후 자동 닫기
 function showModal() {
     const modal = document.getElementById('loginModal');
     if (modal) {
         modal.style.display = 'flex';
         setTimeout(() => {
             modal.style.display = 'none';
-        }, 1500);
+        }, 1000);
     }
 }
