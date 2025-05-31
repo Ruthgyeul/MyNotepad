@@ -33,16 +33,18 @@ CREATE TABLE IF NOT EXISTS categories (
 CREATE TABLE IF NOT EXISTS notes (
     id INT(11) NOT NULL AUTO_INCREMENT,
     user_id INT(11) NOT NULL,
+    user_note_id INT(11) NOT NULL,
     category_id INT(11) NULL,
     title VARCHAR(255) NOT NULL,
     content TEXT,
-    is_important BOOLEAN NOT NULL DEFAULT FALSE,
-    color VARCHAR(7) DEFAULT '#ffffff',
+    important BOOLEAN NOT NULL DEFAULT FALSE,
+    color VARCHAR(7) NOT NULL DEFAULT '#4a6cf7',
     created_at TIMESTAMP NULL DEFAULT current_timestamp(),
     updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE current_timestamp(),
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+    UNIQUE KEY unique_user_note_id (user_id, user_note_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 -- 노트 파일 테이블 생성
@@ -50,14 +52,14 @@ CREATE TABLE IF NOT EXISTS noteFiles (
     id INT(11) NOT NULL AUTO_INCREMENT,
     note_id INT(11) NOT NULL,
     file_name VARCHAR(255) NOT NULL,
-    file_path VARCHAR(255) NOT NULL,
+    file_content LONGTEXT NOT NULL,
     file_size INT(11) NOT NULL,
     file_type VARCHAR(100) NOT NULL,
     created_at TIMESTAMP NULL DEFAULT current_timestamp(),
     updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE current_timestamp(),
     PRIMARY KEY (id),
     FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- 기본 카테고리 자동 생성 트리거
 DELIMITER //
@@ -70,9 +72,18 @@ BEGIN
 END//
 DELIMITER ;
 
--- 기존 사용자들을 위한 '기본' 카테고리 생성
-INSERT INTO categories (user_id, name, is_default)
-SELECT u.id, '기본', TRUE
-FROM users u
-LEFT JOIN categories c ON u.id = c.user_id AND c.name = '기본'
-WHERE c.id IS NULL;
+-- 유저별 노트 ID 자동 증가 트리거
+DELIMITER //
+CREATE TRIGGER IF NOT EXISTS before_note_insert
+BEFORE INSERT ON notes
+FOR EACH ROW
+BEGIN
+    DECLARE max_user_note_id INT;
+    
+    SELECT COALESCE(MAX(user_note_id), 0) INTO max_user_note_id
+    FROM notes
+    WHERE user_id = NEW.user_id;
+    
+    SET NEW.user_note_id = max_user_note_id + 1;
+END//
+DELIMITER ;
