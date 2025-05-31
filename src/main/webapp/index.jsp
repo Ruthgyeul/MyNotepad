@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/logo/icon.png"/>
-    <link href="./styles/intro.css" type="text/css" rel="stylesheet"/>
+    <link href="./styles/index.css" type="text/css" rel="stylesheet"/>
     <script src="./scripts/header.js" defer></script>
     <title>MyNotepad</title>
 </head>
@@ -16,7 +16,7 @@
         <strong onclick="window.location.href='index.jsp'">MyNotepad</strong>
     </div>
     <div class="login-container">
-        <form id="loginForm">
+        <form id="loginForm" action="home.jsp" method="POST">
             <input type="text" name="username" placeholder="Username" required autocomplete="username">
             <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
             <button type="submit" class="login-btn">Login</button>
@@ -27,7 +27,7 @@
 <main>
     <h1 class="bodyTitle">MyNotepad</h1>
     <h3 class="subTitle">A Place for Every Idea.</h3>
-    <button id="startBtn">Start Now</button>
+    <button id="startBtn" onclick="window.location.href='home.jsp'">Start Now</button>
 </main>
 
 <footer>
