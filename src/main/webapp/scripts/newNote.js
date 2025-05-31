@@ -120,38 +120,62 @@ document.addEventListener('DOMContentLoaded', function() {
 // Enhanced file input
 function initFileInput() {
     const fileInput = document.getElementById('noteAttachment');
-    const fileArea = document.querySelector('.attachmentArea');
+    const fileList = document.getElementById('fileList');
     
-    if (fileInput && fileArea) {
-        // Add visual feedback when a file is selected
+    if (fileInput && fileList) {
+        // 파일 선택 시 이벤트 처리
         fileInput.addEventListener('change', function() {
-            if (this.files.length > 0) {
-                const fileName = this.files[0].name;
-                fileArea.classList.add('has-file');
+            const files = Array.from(this.files);
+            
+            // 기존 파일 목록 초기화
+            fileList.innerHTML = '';
+            
+            files.forEach(file => {
+                // 파일 크기 포맷팅
+                const size = formatFileSize(file.size);
                 
-                // Create or update file name display
-                let fileNameDisplay = document.querySelector('.file-name-display');
-                if (!fileNameDisplay) {
-                    fileNameDisplay = document.createElement('div');
-                    fileNameDisplay.className = 'file-name-display';
-                    fileArea.appendChild(fileNameDisplay);
-                }
+                // 파일 아이템 생성
+                const fileItem = document.createElement('div');
+                fileItem.className = 'fileItem';
+                fileItem.innerHTML = `
+                    <span class="fileName">${file.name}</span>
+                    <span class="fileSize">${size}</span>
+                    <button type="button" class="removeFile" onclick="removeFile(this, '${file.name}')">삭제</button>
+                `;
                 
-                fileNameDisplay.textContent = fileName;
-            } else {
-                fileArea.classList.remove('has-file');
-                const fileNameDisplay = document.querySelector('.file-name-display');
-                if (fileNameDisplay) {
-                    fileNameDisplay.remove();
-                }
-            }
-        });
-        
-        // Make the entire area clickable for file selection
-        fileArea.addEventListener('click', function(e) {
-            if (e.target !== fileInput && !fileInput.disabled) {
-                fileInput.click();
-            }
+                fileList.appendChild(fileItem);
+            });
         });
     }
+}
+
+// 파일 제거 함수
+function removeFile(button, fileName) {
+    const fileInput = document.getElementById('noteAttachment');
+    const fileList = button.parentElement;
+    
+    // DataTransfer 객체를 사용하여 파일 목록 업데이트
+    const dt = new DataTransfer();
+    const files = Array.from(fileInput.files);
+    
+    // 제거할 파일을 제외한 나머지 파일만 유지
+    files.forEach(file => {
+        if (file.name !== fileName) {
+            dt.items.add(file);
+        }
+    });
+    
+    // 파일 입력 필드 업데이트
+    fileInput.files = dt.files;
+    
+    // UI에서 파일 항목 제거
+    fileList.remove();
+}
+
+// 파일 크기 포맷팅 함수
+function formatFileSize(size) {
+    if (size < 1024) return size + ' B';
+    if (size < 1024 * 1024) return (size / 1024).toFixed(1) + ' KB';
+    if (size < 1024 * 1024 * 1024) return (size / (1024 * 1024)).toFixed(1) + ' MB';
+    return (size / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
 }
