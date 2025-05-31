@@ -58,8 +58,8 @@
             <tbody>
                 <% for(Map<String, String> note : notes) { %>
                 <tr onclick="window.location.href='viewNote.jsp?id=<%= note.get("id") %>'">
-                    <td><%= note.get("id") %></td>
-                    <td><% if("1".equals(note.get("is_important"))) { %><span class="flagged">🚩</span><% } %></td>
+                    <td><%= note.get("user_note_id") %></td>
+                    <td><% if("1".equals(note.get("important"))) { %><span class="flagged">🚩</span><% } %></td>
                     <td><%= note.get("category_name") != null ? note.get("category_name") : "미분류" %></td>
                     <td><%= note.get("title") %></td>
                     <td><%= note.get("updated_at") %></td>
