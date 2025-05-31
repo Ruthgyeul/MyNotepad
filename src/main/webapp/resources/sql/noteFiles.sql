@@ -1,8 +1,12 @@
-CREATE TABLE noteFiles (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        note_id INT NOT NULL,
-        file_name VARCHAR(255),
-        file_data LONGBLOB,
-        uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE CASCADE
-);
+CREATE TABLE IF NOT EXISTS noteFiles (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    note_id INT(11) NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    file_size INT(11) NOT NULL,
+    file_type VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP NULL DEFAULT current_timestamp(),
+    updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE current_timestamp(),
+    PRIMARY KEY (id),
+    FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
