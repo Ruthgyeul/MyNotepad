@@ -40,7 +40,7 @@
                 categories.add(category);
             }
 
-            sql = "SELECT n.id, n.title, n.category_id, n.is_important, n.updated_at, c.name as category_name " +
+            sql = "SELECT n.id, n.user_note_id, n.title, n.category_id, n.important, n.updated_at, c.name as category_name " +
                   "FROM notes n " +
                   "LEFT JOIN categories c ON n.category_id = c.id " +
                   "WHERE n.user_id = ? " +
@@ -52,10 +52,11 @@
             while(rs.next()) {
                 Map<String, String> note = new HashMap<>();
                 note.put("id", rs.getString("id"));
+                note.put("user_note_id", rs.getString("user_note_id"));
                 note.put("title", rs.getString("title"));
                 note.put("category_id", rs.getString("category_id"));
                 note.put("category_name", rs.getString("category_name"));
-                note.put("is_important", rs.getString("is_important"));
+                note.put("important", rs.getString("important"));
                 note.put("updated_at", rs.getString("updated_at"));
                 notes.add(note);
             }
