@@ -22,7 +22,7 @@
             </div>
             <div class="header-right">
                 <span class="username"><%= username %></span>
-                <button onclick="window.location.href='createNote.jsp'" class="newNoteB">새 노트</button>
+                <button onclick="window.location.href='writeNote.jsp'" class="newNoteB">새 노트</button>
                 <button onclick="window.location.href='manageCategories.jsp'" class="newNoteB">카테고리 관리</button>
             </div>
         </div>
@@ -68,7 +68,7 @@
             </tbody>
         </table>
 
-        <button onclick="window.location.href='createNote.jsp'" class="newNoteB">새로운 노트 생성하기</button>
+        <button onclick="window.location.href='writeNote.jsp'" class="newNoteB">새로운 노트 생성하기</button>
     </main>
 
     <footer>
