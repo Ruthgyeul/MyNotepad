@@ -3,14 +3,7 @@
 - Created by Jaeah Lee
 
 # Getting Started
-## Option 1: Running Locally  
-If you just want to view the HTML file without deploying it to Tomcat, open it directly in your browser:
-```
-file:///path-to-project/index.html
-```
-
-
-## Option 2: Deploy to Tomcat  
+## Deploy to Tomcat  
 To deploy **MyNotepad** on **Apache Tomcat**, follow these steps:
 
 1. **Start the Tomcat Server**  
@@ -43,5 +36,5 @@ To deploy **MyNotepad** on **Apache Tomcat**, follow these steps:
 5. **Access the Web Application**  
    Open your browser and visit:
    ```
-   http://localhost:8080/MyWebApp/index.html
+   http://localhost:8080/MyWebApp
    ```

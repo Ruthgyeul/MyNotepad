@@ -1,150 +1,201 @@
-/*==== Preset ====*/
-@import url("main.css");
+@import 'main.css';
+@import 'header.css';
 
+/*==== Main layout ====*/
 main {
-    width: 100%;
-    height: 90%;
+  align-items: center;
+  flex-direction: column;
 }
 
-/*==== Dashboard ====*/
 /* Menu Bar */
 menu {
-    height: 10%;
-    padding: 0;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .menuBar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
 }
 
-/* Category Dropdown */
+/* Category Filter */
 #categoryFilter {
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  padding: 0.65rem 1rem;
+  min-width: 120px;
+  font-size: 0.95rem;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-color);
+  background-color: white;
+  appearance: none;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-menu form {
-    display: contents;
+#categoryFilter:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
 }
 
-/* Search Input */
+/* Search Form */
+#searchForm {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+}
+
 .searchInput {
-    width: 60%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
 }
 
-/* Search Button */
+.searchInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
 .menuBar button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    color: white;
-    background: #505050;
-    transition: 0.3s;
-    cursor: pointer;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .menuBar button:hover {
-    background: #303030;
+  background-color: var(--accent-color);
 }
 
-/* Note Table */
+/* Table Styling */
 table {
-    width: 65%;
-    margin: auto;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: white;
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: white;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
 }
 
-/* Sticky Header */
 thead {
-    position: sticky;
-    top: 0;
-    background-color: #333;
-    z-index: 10;
+  background-color: var(--primary-color);
 }
 
-/* Table Header */
 th {
-    padding: 12px;
-    text-align: center;
-    color: white;
-    background: #333333;
-    cursor: default;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: white;
 }
 
-th:nth-child(1) {
-    width: 40px;
+th:first-child {
+  text-align: center;
+  width: 60px;
 }
 
 th:nth-child(2) {
-    width: 45px;
+  text-align: center;
+  width: 80px;
 }
 
 th:nth-child(3) {
-    width: 120px;
+  width: 120px;
 }
 
 th:nth-child(5) {
-    width: 120px;
+  text-align: center;
+  width: 140px;
 }
 
-/* Table Rows */
 td {
-    padding: 12px;
-    text-align: center;
-    font-size: 14px;
-    border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
-/* Alternating Row Colors */
-tr:nth-child(even) {
-    background-color: #f8f8f8;
+td:first-child {
+  text-align: center;
 }
 
-/* Hover Effect */
-tr:hover {
-    background-color: #e0e0e0;
-    transition: background 0.3s ease;
-    cursor: pointer;
+td:nth-child(2) {
+  text-align: center;
 }
 
-/* Flagged Icon */
+td:nth-child(5) {
+  text-align: center;
+  color: var(--light-text);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr {
+  transition: var(--transition);
+}
+
+tbody tr:hover {
+  background-color: #f5f7fd;
+}
+
 .flagged {
-    font-size: 16px;
-    color: red;
+  font-size: 1.1rem;
+  color: #f44336;
 }
 
 /* New Note Button */
 .newNoteB {
-    display: flex;
-    width: 180px;
-    height: 40px;
-    margin: 30px auto;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    background: #505050;
-    transition: all 0.3s ease;
-    cursor: pointer;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  margin-top: 2rem;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: white;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .newNoteB:hover {
-    background-color: #505050;
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.newNoteB:active {
+  transform: translateY(-1px);
+}
+
+/* Divider */
+hr {
+  width: 60%;
+  height: 1px;
+  margin: 2rem auto;
+  border: none;
+  background-color: var(--border-color);
 }
