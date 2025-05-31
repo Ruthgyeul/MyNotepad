@@ -40,6 +40,7 @@
     } catch(Exception e) {
         System.err.println("Database error: " + e.getMessage());
         request.setAttribute("errorMessage", "데이터베이스 연결 중 오류가 발생했습니다.");
+    } finally {
         if(rs != null) try { rs.close(); } catch(SQLException e1) {}
         if(pstmt != null) try { pstmt.close(); } catch(SQLException e2) {}
         if(conn != null) try { conn.close(); } catch(SQLException e3) {}
