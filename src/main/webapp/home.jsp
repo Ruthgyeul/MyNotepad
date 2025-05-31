@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ include file="utils/homeData.jsp" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,24 +16,31 @@
 
 <body>
     <header>
-        <div class="title">
-            <strong onclick="window.location.href='index.jsp'">MyNotepad</strong>
+        <div class="header-container">
+            <div class="title">
+                <strong onclick="window.location.href='index.jsp'">MyNotepad</strong>
+            </div>
+            <div class="header-right">
+                <span class="username"><%= username %></span>
+                <button onclick="window.location.href='createNote.jsp'" class="newNoteB">새 노트</button>
+                <button onclick="window.location.href='manageCategories.jsp'" class="newNoteB">카테고리 관리</button>
+            </div>
         </div>
     </header>
 
     <main>
         <menu>
             <div class="menuBar">
-                <select id="categoryFilter">
+                <select id="categoryFilter" onchange="filterNotes()">
                     <option value="all" selected>전체</option>
-                    <option value="general">일반</option>
-                    <option value="study">공부</option>
-                    <option value="etc">기타</option>
+                    <% for(Map<String, String> category : categories) { %>
+                        <option value="<%= category.get("id") %>"><%= category.get("name") %></option>
+                    <% } %>
                 </select>
 
-                <form id="searchForm" method="get" onsubmit="return false;">
+                <form id="searchForm" method="get" onsubmit="return searchNotes(event)">
                     <input type="text" id="searchInput" class="searchInput" placeholder="노트 (제목/내용/키워드) 검색..." />
-                    <button type="button" onclick="searchNotes()">검색</button>
+                    <button type="submit">검색</button>
                 </form>
             </div>
         </menu>
@@ -46,27 +56,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="window.location.href='viewNote.jsp?id=3'">
-                    <td>3</td>
-                    <td><span class="flagged">🚩</span></td>
-                    <td>일반</td>
-                    <td>노트 제목3</td>
-                    <td>2025-03-25</td>
+                <% for(Map<String, String> note : notes) { %>
+                <tr onclick="window.location.href='viewNote.jsp?id=<%= note.get("id") %>'">
+                    <td><%= note.get("id") %></td>
+                    <td><% if("1".equals(note.get("is_important"))) { %><span class="flagged">🚩</span><% } %></td>
+                    <td><%= note.get("category_name") != null ? note.get("category_name") : "미분류" %></td>
+                    <td><%= note.get("title") %></td>
+                    <td><%= note.get("updated_at") %></td>
                 </tr>
-                <tr onclick="window.location.href='viewNote.jsp?id=2'">
-                    <td>2</td>
-                    <td></td>
-                    <td>일반</td>
-                    <td>노트 제목2</td>
-                    <td>2025-03-24</td>
-                </tr>
-                <tr onclick="window.location.href='viewNote.jsp?id=1'">
-                    <td>1</td>
-                    <td></td>
-                    <td>기타</td>
-                    <td>노트 제목1</td>
-                    <td>2025-03-23</td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
 

@@ -232,3 +232,12 @@ header {
 .header-right .newNoteB:hover {
     background-color: #0056b3;
 }
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
