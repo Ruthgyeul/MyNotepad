@@ -35,11 +35,7 @@
                     
                     response.setContentLengthLong(fileSize);
 
-                    // JSP 버퍼 비우기
-                    out.clear();
-                    out = pageContext.pushBody();
-
-                    // 파일 전송
+                    // 파일 전송: JSP 버퍼를 사용하지 않고 직접 출력 스트림을 사용
                     try (OutputStream outStream = response.getOutputStream()) {
                         outStream.write(fileBytes);
                         outStream.flush();
