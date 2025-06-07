@@ -102,7 +102,7 @@
     <meta charset="UTF-8">
     <title>메모 수정 - My Notepad</title>
     <link href="${pageContext.request.contextPath}/styles/write.css" type="text/css" rel="stylesheet"/>
-    <script src="scripts/newNote.js" defer></script>
+    <script src="${pageContext.request.contextPath}/scripts/newNote.js" defer></script>
 </head>
 <body style="background-color: <%= color %>;">
 <header>
