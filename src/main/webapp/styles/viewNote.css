@@ -1,0 +1,261 @@
+@import 'main.css';
+
+/* Note View Container */
+.noteView {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease-out;
+    color: #333;
+    position: relative;
+}
+
+/* Add a semi-transparent white overlay to ensure text readability */
+.noteView::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius);
+    z-index: 0;
+}
+
+/* Ensure all content is above the overlay */
+.noteHeader,
+.noteInfo,
+.noteContent,
+.attachments {
+    position: relative;
+    z-index: 1;
+}
+
+/* Note Header */
+.noteHeader {
+    margin-bottom: 1.5rem;
+}
+
+.noteId {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    color: var(--light-text);
+    background-color: #f2f4f8;
+}
+
+.noteTitle {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+/* Note Info */
+.noteInfo {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.date {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.important {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Note Content */
+.noteContent {
+    min-height: 200px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Attachments Section */
+.attachments {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.attachments h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.attachments h3::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.attachments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.attachments li {
+    margin-bottom: 0.75rem;
+}
+
+.fileLink {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.fileLink:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+}
+
+.fileInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.fileName {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.fileMeta {
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
+
+.fileLink::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 0.75rem;
+    background-image: url('../assets/ui/file.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.editBtn, .deleteBtn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.editBtn {
+    color: white;
+    background-color: var(--primary-color);
+    text-decoration: none;
+}
+
+.editBtn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.deleteBtn {
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+    background-color: white;
+}
+
+.deleteBtn:hover {
+    color: white;
+    background-color: var(--danger-color);
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.imagePreview {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.imagePreview img {
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.imagePreview .fileInfo {
+    padding: 5px 0;
+}
+
+.imagePreview .fileName {
+    font-weight: bold;
+    color: #333;
+}
+
+.imagePreview .fileMeta {
+    color: #666;
+    font-size: 0.9em;
+    margin-left: 10px;
+} 

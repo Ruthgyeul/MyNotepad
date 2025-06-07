@@ -171,12 +171,13 @@
                         // 트랜잭션 시작
                         conn.setAutoCommit(false);
                         try {
-                            // 해당 카테고리의 노트들을 기본 카테고리로 이동
-                            String updateSql = "UPDATE notes SET category_id = NULL WHERE category_id = ? AND user_id = ?";
-                            pstmt = conn.prepareStatement(updateSql);
+                            // 해당 카테고리의 노트들 삭제
+                            String deleteNotesSql = "DELETE FROM notes WHERE category_id = ? AND user_id = ?";
+                            pstmt = conn.prepareStatement(deleteNotesSql);
                             pstmt.setString(1, categoryId);
                             pstmt.setString(2, userId);
                             pstmt.executeUpdate();
+                            
                             // 카테고리 삭제
                             String deleteSql = "DELETE FROM categories WHERE id = ? AND user_id = ?";
                             pstmt = conn.prepareStatement(deleteSql);
